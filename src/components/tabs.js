@@ -23,9 +23,8 @@ const Tabs = (topics) => {
     temp.classList.add("tab");
     temp.textContent = element;
     topic.appendChild(temp);
-  
   })
-  
+
   return topic;
 }
 
@@ -36,10 +35,10 @@ const tabsAppender = (selector) => {
   // It should obtain topics from this endpoint: `http://localhost:5000/api/topics` (test it in Postman/HTTPie!).
   // Find the array of topics inside the response, and create the tabs using the Tabs component.
   // Append the tabs to the element in the DOM that matches the selector passed to the function.
-  //
+  
   axios.get("http://localhost:5000/api/topics")
     .then (response => {
-        document.querySelector(selector).appendChild(Tabs(response.topics));
+        document.querySelector(selector).appendChild(Tabs(response.data.topics));
     })
     .catch(error => {
       console.log(error);
